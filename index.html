@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-  <title>FlowCore Studio | Smart Productivity Hub</title>
-  <!-- Google Fonts & Font Awesome Icons -->
+  <title>FlowCore Studio | Persistent Productivity Suite</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -22,20 +21,16 @@
       color: #0f172a;
     }
 
-    /* main container with responsive padding and max-width */
     .app-container {
       max-width: 1440px;
       margin: 0 auto;
-      background: rgba(255,255,255,0.72);
+      background: rgba(255,255,255,0.78);
       backdrop-filter: blur(8px);
       border-radius: 2.5rem;
       box-shadow: 0 30px 50px -20px rgba(0,0,0,0.3);
-      overflow: hidden;
       padding: 1.5rem 1.8rem;
-      transition: all 0.2s ease;
     }
 
-    /* header area flex wrap */
     .app-header {
       display: flex;
       justify-content: space-between;
@@ -46,6 +41,7 @@
       padding-bottom: 0.8rem;
       border-bottom: 2px solid rgba(59,130,246,0.2);
     }
+
     .logo-area h1 {
       font-size: clamp(1.6rem, 6vw, 2.2rem);
       font-weight: 800;
@@ -53,8 +49,8 @@
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
-      letter-spacing: -0.5px;
     }
+
     .tagline {
       color: #334155;
       font-size: clamp(0.7rem, 3vw, 0.85rem);
@@ -66,7 +62,6 @@
       border-radius: 40px;
     }
 
-    /* SLIDES (carousel) - fully responsive */
     .slides-section {
       background: rgba(255,255,255,0.9);
       border-radius: 1.8rem;
@@ -74,6 +69,7 @@
       box-shadow: 0 12px 28px -8px rgba(0,0,0,0.08);
       padding: 1rem 1.2rem;
     }
+
     .slide-header {
       display: flex;
       justify-content: space-between;
@@ -82,6 +78,7 @@
       gap: 1rem;
       margin-bottom: 1.2rem;
     }
+
     .slide-title {
       font-size: clamp(1.1rem, 5vw, 1.5rem);
       font-weight: 700;
@@ -90,11 +87,13 @@
       -webkit-background-clip: text;
       color: transparent;
     }
+
     .slide-buttons {
       display: flex;
       gap: 0.5rem;
       flex-wrap: wrap;
     }
+
     .btn-slide {
       background: #f1f5f9;
       border: none;
@@ -109,29 +108,30 @@
       gap: 6px;
       color: #1e293b;
     }
+
     .btn-slide.active {
       background: #3b82f6;
       color: white;
       box-shadow: 0 6px 12px -6px #3b82f6;
     }
+
     .slide-content {
       min-height: 220px;
       background: #ffffffdd;
       backdrop-filter: blur(4px);
       border-radius: 1.5rem;
       padding: 1.5rem;
-      transition: 0.2s;
       text-align: center;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
     }
+
     .slide-content i {
       font-size: clamp(2.2rem, 8vw, 3.2rem);
     }
 
-    /* GRID: 2 columns on desktop, 1 on tablet/phone */
     .feature-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -139,11 +139,9 @@
       margin-top: 0.5rem;
     }
 
-    /* cards become full width on mobile */
     @media (max-width: 850px) {
       .feature-grid {
         grid-template-columns: 1fr;
-        gap: 1.2rem;
       }
       .app-container {
         padding: 1rem;
@@ -153,18 +151,17 @@
       }
     }
 
-    /* card style */
     .card {
       background: white;
       border-radius: 1.8rem;
       padding: 1.2rem 1.3rem;
       box-shadow: 0 20px 30px -12px rgba(0,0,0,0.08);
-      transition: all 0.2s;
       border: 1px solid #eef2ff;
       height: 100%;
       display: flex;
       flex-direction: column;
     }
+
     .card h3 {
       font-size: clamp(1.2rem, 4vw, 1.4rem);
       font-weight: 700;
@@ -174,7 +171,7 @@
       gap: 10px;
       color: #0f172a;
     }
-    /* custom buttons */
+
     .custom-btn {
       background: linear-gradient(95deg, #3b82f6, #6366f1);
       border: none;
@@ -188,31 +185,33 @@
       align-items: center;
       gap: 8px;
       font-size: 0.85rem;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
     }
+
     .custom-btn-outline {
       background: transparent;
       border: 1.5px solid #3b82f6;
       color: #3b82f6;
-      box-shadow: none;
     }
+
     .custom-btn-outline:hover {
       background: #eef2ff;
     }
+
     .custom-btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 12px 18px -8px #3b82f6;
     }
+
     input, textarea {
       width: 100%;
       padding: 0.7rem 1rem;
       border-radius: 1.2rem;
       border: 1px solid #cbd5e1;
-      background: #ffffff;
       font-family: inherit;
       margin: 0.4rem 0 0.8rem 0;
       font-size: 0.9rem;
     }
+
     .todo-item {
       background: #f8fafc;
       border-radius: 1rem;
@@ -223,16 +222,19 @@
       align-items: center;
       border-left: 4px solid #3b82f6;
     }
+
     .todo-text {
       flex: 1;
       cursor: pointer;
       font-size: 0.9rem;
       word-break: break-word;
     }
+
     .completed {
       text-decoration: line-through;
       color: #94a3b8;
     }
+
     .delete-icon {
       color: #ef4444;
       cursor: pointer;
@@ -241,6 +243,7 @@
       font-size: 1rem;
       padding: 0 5px;
     }
+
     .minutes-preview {
       background: #f1f5f9;
       border-radius: 1rem;
@@ -251,7 +254,7 @@
       overflow-y: auto;
       font-family: monospace;
     }
-    /* calendar grid responsive */
+
     .calendar-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
@@ -259,6 +262,7 @@
       margin-top: 0.8rem;
       overflow-x: auto;
     }
+
     .cal-day {
       background: #f8fafc;
       text-align: center;
@@ -271,6 +275,7 @@
       flex-direction: column;
       align-items: center;
     }
+
     .cal-event {
       background: #dbeafe;
       border-radius: 0.5rem;
@@ -279,19 +284,21 @@
       padding: 0.1rem 0.2rem;
       width: 100%;
       white-space: nowrap;
-      overflow-x: hidden;
+      overflow: hidden;
       text-overflow: ellipsis;
-      max-width: 100%;
     }
+
     .event-list {
       margin-top: 1rem;
       max-height: 150px;
       overflow-y: auto;
     }
+
     hr {
       margin: 0.8rem 0;
       border-color: #e2e8f0;
     }
+
     footer {
       text-align: center;
       margin-top: 2rem;
@@ -299,35 +306,34 @@
       color: #334155;
       padding-top: 0.5rem;
     }
-    /* scrollbar nice */
-    ::-webkit-scrollbar {
-      width: 5px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #eef2ff;
-      border-radius: 10px;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #b9c7e0;
-      border-radius: 10px;
-    }
-    /* touch-friendly buttons */
+
     button {
       touch-action: manipulation;
     }
+
     @media (max-width: 550px) {
       .btn-slide span:not(.fa) {
         display: none;
       }
-      .btn-slide i {
-        margin: 0;
-      }
       .btn-slide {
         padding: 0.5rem 0.8rem;
       }
-      .card {
-        padding: 1rem;
-      }
+    }
+
+    .toast-msg {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1e293b;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      font-size: 0.8rem;
+      z-index: 1000;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s;
     }
   </style>
 </head>
@@ -338,17 +344,11 @@
       <h1><i class="fas fa-pen-ruler"></i> FlowCore Studio</h1>
     </div>
     <div class="tagline">
-      <i class="fas fa-mobile-alt"></i> <span>notes · tasks · minutes · calendar</span>
-      <i class="fas fa-sync-alt"></i>
+      <i class="fas fa-database"></i> <span>persistent · notes · tasks · calendar</span>
     </div>
   </div>
-
-  <!-- Interactive Slides -->
   <div id="slidesRoot"></div>
-
-  <!-- Feature Grid -->
   <div class="feature-grid">
-    <!-- Note Taking Card -->
     <div class="card">
       <h3><i class="fas fa-pen-fancy"></i> Note Taking</h3>
       <input type="text" id="noteTitle" placeholder="Note title" />
@@ -358,10 +358,9 @@
         <button id="saveNoteBtn" class="custom-btn"><i class="fas fa-save"></i> Add Note</button>
       </div>
       <hr />
-      <div id="notesList" style="max-height: 240px; overflow-y: auto; flex:1;"></div>
+      <div id="notesList" style="max-height: 240px; overflow-y: auto;"></div>
     </div>
 
-    <!-- To-Do List Card -->
     <div class="card">
       <h3><i class="fas fa-check-circle"></i> To-Do List</h3>
       <div style="display: flex; gap: 8px; flex-wrap: wrap;">
@@ -371,20 +370,18 @@
       <div id="todoList" style="margin-top: 1rem; max-height: 240px; overflow-y: auto;"></div>
     </div>
 
-    <!-- Minutes Generator Card -->
     <div class="card">
       <h3><i class="fas fa-file-alt"></i> Generate Minutes</h3>
       <label style="font-weight:500; font-size:0.8rem;">Meeting Topic</label>
-      <input type="text" id="minutesTopic" value="Weekly Sync" />
+      <input type="text" id="minutesTopic" />
       <label style="font-weight:500; font-size:0.8rem;">Key Discussion</label>
-      <textarea id="minutesDiscussion" rows="2">Discussed Q2 roadmap, design system updates.</textarea>
+      <textarea id="minutesDiscussion" rows="2"></textarea>
       <label style="font-weight:500; font-size:0.8rem;">Decisions</label>
-      <textarea id="minutesDecisions" rows="2">Adopt new component library; next milestone June 10.</textarea>
-      <button id="generateMinutesBtn" class="custom-btn" style="align-self: flex-start;"><i class="fas fa-magic"></i> Generate Write-up</button>
+      <textarea id="minutesDecisions" rows="2"></textarea>
+      <button id="generateMinutesBtn" class="custom-btn"><i class="fas fa-magic"></i> Generate Write-up</button>
       <div id="minutesOutput" style="margin-top: 1rem;"></div>
     </div>
 
-    <!-- Calendar Scheduler -->
     <div class="card">
       <h3><i class="fas fa-calendar-alt"></i> Activity Calendar</h3>
       <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end;">
@@ -400,46 +397,48 @@
           <label style="font-size:0.7rem;">Time</label>
           <input type="text" id="eventTime" placeholder="e.g., 2:30 PM" />
         </div>
-        <button id="addEventBtn" class="custom-btn" style="margin-bottom: 0.2rem;"><i class="fas fa-plus-circle"></i> Add</button>
+        <button id="addEventBtn" class="custom-btn"><i class="fas fa-plus-circle"></i> Add</button>
       </div>
       <div id="calendarGrid" class="calendar-grid"></div>
       <div id="eventList" class="event-list"></div>
     </div>
   </div>
   <footer>
-    <i class="fas fa-heart" style="color: #ef4444;"></i> Fully responsive · Tap any element · Smart workflow
+    <i class="fas fa-heart" style="color: #ef4444;"></i> Fully responsive & persistent · All data saved automatically
   </footer>
 </div>
+<div id="toastMsg" class="toast-msg"></div>
 
 <script>
-  // ---------- GLOBAL STATE ----------
-  let notes = [
-    { id: 1, title: "Welcome", content: "Start taking notes! Edit or delete anytime." },
-    { id: 2, title: "Design ideas", content: "Use gradient cards, responsive layout." }
-  ];
-  let todos = [
-    { id: 1, text: "Review project roadmap", completed: false },
-    { id: 2, text: "Prepare UI mockups", completed: true },
-    { id: 3, text: "Team sync at 3 PM", completed: false }
-  ];
-  let calendarEvents = [
-    { id: 1, date: getToday(), title: "Design review", time: "10:00 AM" },
-    { id: 2, date: getFutureDate(3), title: "Sprint demo", time: "2:00 PM" }
-  ];
-  let editingNoteId = null;
+  // Storage keys
+  const STORAGE_KEYS = {
+    NOTES: 'flowcore_notes',
+    TODOS: 'flowcore_todos',
+    EVENTS: 'flowcore_events',
+    MINUTES_TOPIC: 'flowcore_minutes_topic',
+    MINUTES_DISCUSSION: 'flowcore_minutes_discussion',
+    MINUTES_DECISIONS: 'flowcore_minutes_decisions'
+  };
 
-  // Helper dates
+  // Helper functions
   function getToday() {
     const d = new Date();
-    return d.toISOString().slice(0,10);
+    return d.toISOString().slice(0, 10);
   }
+
   function getFutureDate(days) {
     const d = new Date();
     d.setDate(d.getDate() + days);
-    return d.toISOString().slice(0,10);
+    return d.toISOString().slice(0, 10);
   }
 
-  // escapeHtml
+  function showToast(msg) {
+    const toast = document.getElementById('toastMsg');
+    toast.textContent = msg;
+    toast.style.opacity = '1';
+    setTimeout(() => { toast.style.opacity = '0'; }, 2000);
+  }
+
   function escapeHtml(str) {
     if (!str) return '';
     return str.replace(/[&<>]/g, function(m) {
@@ -450,15 +449,63 @@
     });
   }
 
-  // ---------- SLIDES (Interactive Carousel) ----------
-  const slidesData = [
-    { icon: "fa-rocket", title: "🚀 Smart Workspace", desc: "All-in-one dashboard: notes, tasks, meeting minutes & calendar. Fully responsive." },
-    { icon: "fa-list-check", title: "📝 Notes & To-Dos", desc: "Capture ideas instantly, organize tasks, sync across devices with adaptive UI." },
-    { icon: "fa-calendar-week", title: "📅 Seamless Calendar", desc: "Schedule activities, see month view, manage events on the go." },
-    { icon: "fa-brain", title: "✨ AI-Powered Minutes", desc: "Generate meeting write-ups with one click. Copy & share professional minutes." }
-  ];
-  let currentSlide = 0;
+  // Load/Save helpers
+  function loadData(key, defaultValue) {
+    try {
+      const stored = localStorage.getItem(key);
+      if (stored) {
+        return JSON.parse(stored);
+      }
+    } catch(e) {
+      console.error('Error loading data:', e);
+    }
+    return defaultValue;
+  }
 
+  function saveData(key, data) {
+    try {
+      localStorage.setItem(key, JSON.stringify(data));
+    } catch(e) {
+      console.error('Error saving data:', e);
+    }
+  }
+
+  // Initialize data
+  let notes = loadData(STORAGE_KEYS.NOTES, [
+    { id: 1, title: "Welcome to FlowCore", content: "Your notes are saved automatically! Try editing or deleting this note." },
+    { id: 2, title: "Getting Started", content: "Add tasks, schedule events, and generate meeting minutes. Everything persists." }
+  ]);
+
+  let todos = loadData(STORAGE_KEYS.TODOS, [
+    { id: 1, text: "Try completing this task", completed: false },
+    { id: 2, text: "Delete me using the trash icon", completed: false },
+    { id: 3, text: "Add your own tasks below", completed: true }
+  ]);
+
+  let calendarEvents = loadData(STORAGE_KEYS.EVENTS, [
+    { id: 1, date: getToday(), title: "Design review", time: "10:00 AM" },
+    { id: 2, date: getFutureDate(2), title: "Sprint planning", time: "2:00 PM" },
+    { id: 3, date: getFutureDate(5), title: "Client demo", time: "11:00 AM" }
+  ]);
+
+  let editingNoteId = null;
+
+  function persistAll() {
+    saveData(STORAGE_KEYS.NOTES, notes);
+    saveData(STORAGE_KEYS.TODOS, todos);
+    saveData(STORAGE_KEYS.EVENTS, calendarEvents);
+  }
+
+  // Slides Carousel
+  const slidesData = [
+    { icon: "fa-rocket", title: "🚀 Persistent Workspace", desc: "All your notes, tasks & events are saved automatically in your browser. Refresh without fear!" },
+    { icon: "fa-list-check", title: "📝 Notes & To-Dos", desc: "Create, edit, delete, and complete tasks. Everything stays until you remove it." },
+    { icon: "fa-calendar-week", title: "📅 Smart Calendar", desc: "Schedule activities, delete events, and see your month at a glance. Fully persistent." },
+    { icon: "fa-brain", title: "✨ Meeting Minutes", desc: "Generate professional minutes with one click. Copy to clipboard and share instantly." }
+  ];
+  
+  let currentSlide = 0;
+  
   function renderSlides() {
     const container = document.getElementById('slidesRoot');
     if (!container) return;
@@ -476,12 +523,11 @@
         <div class="slide-content">
           <i class="fas ${slide.icon}" style="font-size: clamp(2rem, 8vw, 3.2rem); color: #3b82f6; margin-bottom: 0.8rem;"></i>
           <h2 style="margin-bottom: 0.5rem; font-size: clamp(1.2rem, 4vw, 1.8rem);">${slide.title}</h2>
-          <p style="max-width: 550px; color: #2d3a5e; font-size: clamp(0.8rem, 3vw, 0.95rem);">${slide.desc}</p>
-          <div style="margin-top: 1rem;"><span style="background:#eef2ff; padding:0.2rem 1rem; border-radius:2rem; font-size:0.75rem;"><i class="fas fa-hand-peace"></i> Interactive tools below</span></div>
+          <p style="max-width: 550px; color: #2d3a5e;">${slide.desc}</p>
         </div>
       </div>
     `;
-    // attach events
+    
     document.getElementById('prevSlideBtn')?.addEventListener('click', () => {
       currentSlide = (currentSlide - 1 + slidesData.length) % slidesData.length;
       renderSlides();
@@ -498,42 +544,45 @@
     });
   }
 
-  // ---------- NOTES RENDER ----------
+  // Notes Functions
   function renderNotes() {
     const container = document.getElementById('notesList');
     if (!container) return;
+    
     if (notes.length === 0) {
-      container.innerHTML = '<div style="text-align:center; color:#94a3b8;">📭 No notes yet. Add one!</div>';
+      container.innerHTML = '<div style="text-align:center; color:#94a3b8; padding:1rem;">📭 No notes yet. Click "Add Note" to create one!</div>';
       return;
     }
+    
     container.innerHTML = notes.map(note => `
       <div style="background:#ffffff; border-radius:1rem; padding:0.7rem; margin-bottom:0.6rem; border:1px solid #e2e8f0;">
-        <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px; flex-wrap:wrap;">
-          <strong style="font-size:0.9rem; word-break:break-word;">${escapeHtml(note.title)}</strong>
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px;">
+          <strong style="font-size:0.9rem; flex:1;">${escapeHtml(note.title)}</strong>
           <div style="display: flex; gap: 6px;">
-            <button class="edit-note-btn" data-id="${note.id}" style="background:none; border:none; cursor:pointer; color:#3b82f6; font-size:0.9rem;"><i class="fas fa-edit"></i></button>
-            <button class="delete-note-btn" data-id="${note.id}" style="background:none; border:none; cursor:pointer; color:#ef4444;"><i class="fas fa-trash"></i></button>
+            <button class="edit-note-btn" data-id="${note.id}" style="background:none; border:none; cursor:pointer; color:#3b82f6; font-size:1rem;"><i class="fas fa-edit"></i></button>
+            <button class="delete-note-btn" data-id="${note.id}" style="background:none; border:none; cursor:pointer; color:#ef4444; font-size:1rem;"><i class="fas fa-trash"></i></button>
           </div>
         </div>
-        <div style="font-size:0.8rem; color:#334155; margin-top:6px;">${escapeHtml(note.content.substring(0, 70))}${note.content.length > 70 ? '...' : ''}</div>
+        <div style="font-size:0.8rem; color:#334155; margin-top:6px;">${escapeHtml(note.content.substring(0, 80))}${note.content.length > 80 ? '...' : ''}</div>
       </div>
     `).join('');
+    
     document.querySelectorAll('.edit-note-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
+      btn.addEventListener('click', () => {
         const id = parseInt(btn.dataset.id);
         const note = notes.find(n => n.id === id);
         if (note) {
           document.getElementById('noteTitle').value = note.title;
           document.getElementById('noteContent').value = note.content;
           editingNoteId = id;
-          const saveBtn = document.getElementById('saveNoteBtn');
-          saveBtn.innerHTML = '<i class="fas fa-save"></i> Update Note';
+          document.getElementById('saveNoteBtn').innerHTML = '<i class="fas fa-save"></i> Update Note';
           document.getElementById('cancelNoteBtn').style.display = 'inline-flex';
         }
       });
     });
+    
     document.querySelectorAll('.delete-note-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
+      btn.addEventListener('click', () => {
         const id = parseInt(btn.dataset.id);
         notes = notes.filter(n => n.id !== id);
         if (editingNoteId === id) {
@@ -543,28 +592,42 @@
           document.getElementById('saveNoteBtn').innerHTML = '<i class="fas fa-save"></i> Add Note';
           document.getElementById('cancelNoteBtn').style.display = 'none';
         }
+        persistAll();
         renderNotes();
+        showToast('Note deleted successfully');
       });
     });
   }
-
-  function saveNoteHandler() {
+  
+  function saveNote() {
     const title = document.getElementById('noteTitle').value.trim();
     const content = document.getElementById('noteContent').value;
-    if (!title) return;
+    
+    if (!title) {
+      showToast('Please enter a title');
+      return;
+    }
+    
     if (editingNoteId) {
-      const idx = notes.findIndex(n => n.id === editingNoteId);
-      if (idx !== -1) notes[idx] = { ...notes[idx], title, content };
+      const index = notes.findIndex(n => n.id === editingNoteId);
+      if (index !== -1) {
+        notes[index] = { ...notes[index], title, content };
+        showToast('Note updated');
+      }
       editingNoteId = null;
       document.getElementById('saveNoteBtn').innerHTML = '<i class="fas fa-save"></i> Add Note';
       document.getElementById('cancelNoteBtn').style.display = 'none';
     } else {
       notes.push({ id: Date.now(), title, content });
+      showToast('Note added');
     }
+    
     document.getElementById('noteTitle').value = '';
     document.getElementById('noteContent').value = '';
+    persistAll();
     renderNotes();
   }
+  
   function cancelEdit() {
     editingNoteId = null;
     document.getElementById('noteTitle').value = '';
@@ -572,67 +635,113 @@
     document.getElementById('saveNoteBtn').innerHTML = '<i class="fas fa-save"></i> Add Note';
     document.getElementById('cancelNoteBtn').style.display = 'none';
   }
-
-  // ---------- TODOS ----------
+  
+  // Todos Functions
   function renderTodos() {
     const container = document.getElementById('todoList');
     if (!container) return;
+    
     if (todos.length === 0) {
-      container.innerHTML = '<div style="color:#94a3b8; text-align:center;">✨ No tasks, take a break!</div>';
+      container.innerHTML = '<div style="color:#94a3b8; text-align:center; padding:1rem;">✨ No tasks! Add one above.</div>';
       return;
     }
+    
     container.innerHTML = todos.map(todo => `
       <div class="todo-item">
         <span class="todo-text ${todo.completed ? 'completed' : ''}" data-id="${todo.id}">
           ${todo.completed ? '<i class="fas fa-check-circle" style="color:#22c55e; margin-right:8px;"></i>' : '<i class="far fa-circle" style="margin-right:8px;"></i>'}
           ${escapeHtml(todo.text)}
         </span>
-        <button class="delete-todo-btn" data-id="${todo.id}" class="delete-icon"><i class="fas fa-trash-alt"></i></button>
+        <button class="delete-todo-btn" data-id="${todo.id}" style="background:none; border:none; cursor:pointer; color:#ef4444; font-size:1rem;"><i class="fas fa-trash-alt"></i></button>
       </div>
     `).join('');
+    
     document.querySelectorAll('.todo-text').forEach(span => {
-      span.addEventListener('click', (e) => {
+      span.addEventListener('click', () => {
         const id = parseInt(span.dataset.id);
         todos = todos.map(t => t.id === id ? { ...t, completed: !t.completed } : t);
+        persistAll();
         renderTodos();
+        showToast('Task status updated');
       });
     });
+    
     document.querySelectorAll('.delete-todo-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
+      btn.addEventListener('click', () => {
         const id = parseInt(btn.dataset.id);
         todos = todos.filter(t => t.id !== id);
+        persistAll();
         renderTodos();
+        showToast('Task deleted');
       });
     });
   }
+  
   function addTodo() {
     const input = document.getElementById('todoInput');
     const text = input.value.trim();
-    if (!text) return;
+    if (!text) {
+      showToast('Please enter a task');
+      return;
+    }
     todos.push({ id: Date.now(), text, completed: false });
-    input.value = '';
+    persistAll();
     renderTodos();
+    input.value = '';
+    showToast('Task added');
   }
-
-  // ---------- MINUTES ----------
+  
+  // Minutes Functions
+  function saveMinutesFields() {
+    saveData(STORAGE_KEYS.MINUTES_TOPIC, document.getElementById('minutesTopic').value);
+    saveData(STORAGE_KEYS.MINUTES_DISCUSSION, document.getElementById('minutesDiscussion').value);
+    saveData(STORAGE_KEYS.MINUTES_DECISIONS, document.getElementById('minutesDecisions').value);
+  }
+  
+  function loadMinutesFields() {
+    document.getElementById('minutesTopic').value = loadData(STORAGE_KEYS.MINUTES_TOPIC, "Weekly Team Sync");
+    document.getElementById('minutesDiscussion').value = loadData(STORAGE_KEYS.MINUTES_DISCUSSION, "Discussed Q4 roadmap and frontend architecture improvements.");
+    document.getElementById('minutesDecisions').value = loadData(STORAGE_KEYS.MINUTES_DECISIONS, "Adopt new component library; Launch beta by end of month.");
+  }
+  
   function generateMinutes() {
     const topic = document.getElementById('minutesTopic').value;
     const discussion = document.getElementById('minutesDiscussion').value;
     const decisions = document.getElementById('minutesDecisions').value;
     const date = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-    const minutesText = `📋 MEETING MINUTES\nDate: ${date}\nTopic: ${topic}\n\n🔹 Discussion Points:\n${discussion}\n\n🔸 Decisions Made:\n${decisions}\n\n✅ Action Items: Follow up on deliverables, schedule next sync.\n--- Generated by FlowCore`;
+    
+    const minutesText = `📋 MEETING MINUTES
+Date: ${date}
+Topic: ${topic}
+
+🔹 Discussion Points:
+${discussion}
+
+🔸 Decisions Made:
+${decisions}
+
+✅ Action Items:
+- Follow up on deliverables
+- Schedule next team sync
+- Document technical decisions
+
+--- Generated by FlowCore Studio ---`;
+    
     const outputDiv = document.getElementById('minutesOutput');
     outputDiv.innerHTML = `
       <div class="minutes-preview">${escapeHtml(minutesText)}</div>
       <button id="copyMinutesBtn" class="custom-btn custom-btn-outline" style="margin-top: 0.7rem;"><i class="fas fa-copy"></i> Copy Minutes</button>
     `;
+    
     document.getElementById('copyMinutesBtn')?.addEventListener('click', () => {
       navigator.clipboard.writeText(minutesText);
-      alert('✅ Minutes copied to clipboard!');
+      showToast('Minutes copied to clipboard!');
     });
+    
+    saveMinutesFields();
   }
-
-  // ---------- CALENDAR (responsive month view) ----------
+  
+  // Calendar Functions
   function getCalendarDays() {
     const today = new Date();
     const year = today.getFullYear();
@@ -645,72 +754,97 @@
     for (let i = 1; i <= daysInMonth; i++) days.push(i);
     return { days, year, month };
   }
+  
   function getEventsForDay(dayNum, year, month) {
     if (!dayNum) return [];
-    const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(dayNum).padStart(2,'0')}`;
+    const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(dayNum).padStart(2, '0')}`;
     return calendarEvents.filter(ev => ev.date === dateStr);
   }
+  
   function renderCalendar() {
     const container = document.getElementById('calendarGrid');
     const eventListEl = document.getElementById('eventList');
     if (!container) return;
+    
     const { days, year, month } = getCalendarDays();
-    const weekdays = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+    const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     let html = weekdays.map(day => `<div style="font-weight:600; font-size:0.7rem; text-align:center;">${day}</div>`).join('');
+    
     days.forEach(day => {
       if (day === null) {
         html += `<div class="cal-day"></div>`;
       } else {
         const evs = getEventsForDay(day, year, month);
-        html += `<div class="cal-day"><strong>${day}</strong>${evs.map(ev => `<div class="cal-event" title="${ev.title} ${ev.time}">${ev.title.length>7?ev.title.slice(0,6)+'..':ev.title}</div>`).join('')}</div>`;
+        html += `<div class="cal-day"><strong>${day}</strong>${evs.map(ev => `<div class="cal-event" title="${ev.title} - ${ev.time}">${ev.title.length > 8 ? ev.title.slice(0, 6) + '..' : ev.title}</div>`).join('')}</div>`;
       }
     });
     container.innerHTML = html;
-    // event list
+    
     if (calendarEvents.length === 0) {
-      eventListEl.innerHTML = '<strong>📌 Upcoming Activities</strong><div style="font-size:0.75rem;">No scheduled events</div>';
+      eventListEl.innerHTML = '<strong>📌 Upcoming Activities</strong><div style="font-size:0.75rem; padding:0.5rem;">No scheduled events</div>';
     } else {
-      eventListEl.innerHTML = `<strong>📌 Upcoming Activities</strong>` + calendarEvents.map(ev => `
-        <div style="display:flex; justify-content:space-between; align-items:center; background:#f1f5f9; margin:6px 0; padding:6px 10px; border-radius:12px; gap:6px; flex-wrap:wrap;">
+      eventListEl.innerHTML = '<strong>📌 Upcoming Activities</strong>' + calendarEvents.map(ev => `
+        <div style="display:flex; justify-content:space-between; align-items:center; background:#f1f5f9; margin:6px 0; padding:6px 10px; border-radius:12px;">
           <span style="font-size:0.8rem;"><i class="far fa-calendar-check"></i> ${ev.date} – ${escapeHtml(ev.title)} (${ev.time})</span>
-          <button class="delete-event-btn" data-id="${ev.id}" style="background:none; border:none; color:#ef4444; cursor:pointer;"><i class="fas fa-times-circle"></i></button>
+          <button class="delete-event-btn" data-id="${ev.id}" style="background:none; border:none; color:#ef4444; cursor:pointer; font-size:1rem;"><i class="fas fa-times-circle"></i></button>
         </div>
       `).join('');
+      
       document.querySelectorAll('.delete-event-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
+        btn.addEventListener('click', () => {
           const id = parseInt(btn.dataset.id);
           calendarEvents = calendarEvents.filter(ev => ev.id !== id);
+          persistAll();
           renderCalendar();
+          showToast('Event deleted');
         });
       });
     }
   }
-  function addCalendarEvent() {
+  
+  function addEvent() {
     const date = document.getElementById('eventDate').value;
     const title = document.getElementById('eventTitle').value.trim();
     const time = document.getElementById('eventTime').value.trim() || "All day";
-    if (!date || !title) return;
+    
+    if (!date || !title) {
+      showToast('Please fill both date and activity');
+      return;
+    }
+    
     calendarEvents.push({ id: Date.now(), date, title, time });
+    persistAll();
+    renderCalendar();
     document.getElementById('eventTitle').value = '';
     document.getElementById('eventTime').value = '';
     document.getElementById('eventDate').value = getToday();
-    renderCalendar();
+    showToast('Event scheduled');
   }
-
-  // ---------- INIT & EVENT LISTENERS (mobile friendly) ----------
+  
+  // Initialize everything
   document.addEventListener('DOMContentLoaded', () => {
     renderSlides();
+    loadMinutesFields();
     renderNotes();
     renderTodos();
     renderCalendar();
     document.getElementById('eventDate').value = getToday();
-
-    document.getElementById('saveNoteBtn').addEventListener('click', saveNoteHandler);
+    
+    // Attach event listeners
+    document.getElementById('saveNoteBtn').addEventListener('click', saveNote);
     document.getElementById('cancelNoteBtn').addEventListener('click', cancelEdit);
     document.getElementById('addTodoBtn').addEventListener('click', addTodo);
-    document.getElementById('todoInput').addEventListener('keypress', (e) => { if(e.key === 'Enter') addTodo(); });
+    document.getElementById('todoInput').addEventListener('keypress', (e) => { if (e.key === 'Enter') addTodo(); });
     document.getElementById('generateMinutesBtn').addEventListener('click', generateMinutes);
-    document.getElementById('addEventBtn').addEventListener('click', addCalendarEvent);
+    document.getElementById('addEventBtn').addEventListener('click', addEvent);
+    
+    // Auto-save minutes fields
+    const minutesTopic = document.getElementById('minutesTopic');
+    const minutesDisc = document.getElementById('minutesDiscussion');
+    const minutesDec = document.getElementById('minutesDecisions');
+    minutesTopic.addEventListener('input', saveMinutesFields);
+    minutesDisc.addEventListener('input', saveMinutesFields);
+    minutesDec.addEventListener('input', saveMinutesFields);
   });
 </script>
 </body>
