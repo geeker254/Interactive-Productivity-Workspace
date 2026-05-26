@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>FlowCore Studio | Smart Productivity Hub</title>
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(145deg, #eef2ff 0%, #d9e4ff 100%);
+      min-height: 100vh;
+      padding: 1.2rem;
+      color: #0f172a;
+    }
+
+    /* main container with responsive padding and max-width */
+    .app-container {
+      max-width: 1440px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(8px);
+      border-radius: 2.5rem;
+      box-shadow: 0 30px 50px -20px rgba(0,0,0,0.3);
+      overflow: hidden;
+      padding: 1.5rem 1.8rem;
+      transition: all 0.2s ease;
+    }
+
+    /* header area flex wrap */
+    .app-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid rgba(59,130,246,0.2);
+    }
+    .logo-area h1 {
+      font-size: clamp(1.6rem, 6vw, 2.2rem);
+      font-weight: 800;
+      background: linear-gradient(130deg, #0f2b5c, #3b82f6);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .tagline {
+      color: #334155;
+      font-size: clamp(0.7rem, 3vw, 0.85rem);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.7);
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+    }
+
+    /* SLIDES (carousel) - fully responsive */
+    .slides-section {
+      background: rgba(255,255,255,0.9);
+      border-radius: 1.8rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 12px 28px -8px rgba(0,0,0,0.08);
+      padding: 1rem 1.2rem;
+    }
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+    .slide-title {
+      font-size: clamp(1.1rem, 5vw, 1.5rem);
+      font-weight: 700;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .slide-buttons {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .btn-slide {
+      background: #f1f5f9;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #1e293b;
+    }
+    .btn-slide.active {
+      background: #3b82f6;
+      color: white;
+      box-shadow: 0 6px 12px -6px #3b82f6;
+    }
+    .slide-content {
+      min-height: 220px;
+      background: #ffffffdd;
+      backdrop-filter: blur(4px);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      transition: 0.2s;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .slide-content i {
+      font-size: clamp(2.2rem, 8vw, 3.2rem);
+    }
+
+    /* GRID: 2 columns on desktop, 1 on tablet/phone */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    /* cards become full width on mobile */
+    @media (max-width: 850px) {
+      .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .app-container {
+        padding: 1rem;
+      }
+      body {
+        padding: 0.8rem;
+      }
+    }
+
+    /* card style */
+    .card {
+      background: white;
+      border-radius: 1.8rem;
+      padding: 1.2rem 1.3rem;
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.08);
+      transition: all 0.2s;
+      border: 1px solid #eef2ff;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .card h3 {
+      font-size: clamp(1.2rem, 4vw, 1.4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #0f172a;
+    }
+    /* custom buttons */
+    .custom-btn {
+      background: linear-gradient(95deg, #3b82f6, #6366f1);
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+    }
+    .custom-btn-outline {
+      background: transparent;
+      border: 1.5px solid #3b82f6;
+      color: #3b82f6;
+      box-shadow: none;
+    }
+    .custom-btn-outline:hover {
+      background: #eef2ff;
+    }
+    .custom-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 18px -8px #3b82f6;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      border-radius: 1.2rem;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      font-family: inherit;
+      margin: 0.4rem 0 0.8rem 0;
+      font-size: 0.9rem;
+    }
+    .todo-item {
+      background: #f8fafc;
+      border-radius: 1rem;
+      padding: 0.6rem 1rem;
+      margin-bottom: 0.6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-left: 4px solid #3b82f6;
+    }
+    .todo-text {
+      flex: 1;
+      cursor: pointer;
+      font-size: 0.9rem;
+      word-break: break-word;
+    }
+    .completed {
+      text-decoration: line-through;
+      color: #94a3b8;
+    }
+    .delete-icon {
+      color: #ef4444;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-size: 1rem;
+      padding: 0 5px;
+    }
+    .minutes-preview {
+      background: #f1f5f9;
+      border-radius: 1rem;
+      padding: 1rem;
+      font-size: 0.8rem;
+      white-space: pre-wrap;
+      max-height: 200px;
+      overflow-y: auto;
+      font-family: monospace;
+    }
+    /* calendar grid responsive */
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+      margin-top: 0.8rem;
+      overflow-x: auto;
+    }
+    .cal-day {
+      background: #f8fafc;
+      text-align: center;
+      padding: 0.5rem 0.2rem;
+      border-radius: 0.9rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      min-height: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .cal-event {
+      background: #dbeafe;
+      border-radius: 0.5rem;
+      margin-top: 0.2rem;
+      font-size: 0.65rem;
+      padding: 0.1rem 0.2rem;
+      width: 100%;
+      white-space: nowrap;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+    .event-list {
+      margin-top: 1rem;
+      max-height: 150px;
+      overflow-y: auto;
+    }
+    hr {
+      margin: 0.8rem 0;
+      border-color: #e2e8f0;
+    }
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.7rem;
+      color: #334155;
+      padding-top: 0.5rem;
+    }
+    /* scrollbar nice */
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #eef2ff;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #b9c7e0;
+      border-radius: 10px;
+    }
+    /* touch-friendly buttons */
+    button {
+      touch-action: manipulation;
+    }
+    @media (max-width: 550px) {
+      .btn-slide span:not(.fa) {
+        display: none;
+      }
+      .btn-slide i {
+        margin: 0;
+      }
+      .btn-slide {
+        padding: 0.5rem 0.8rem;
+      }
+      .card {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="app-container">
+  <div class="app-header">
+    <div class="logo-area">
+      <h1><i class="fas fa-pen-ruler"></i> FlowCore Studio</h1>
+    </div>
+    <div class="tagline">
+      <i class="fas fa-mobile-alt"></i> <span>notes · tasks · minutes · calendar</span>
+      <i class="fas fa-sync-alt"></i>
+    </div>
+  </div>
+
+  <!-- Interactive Slides -->
+  <div id="slidesRoot"></div>
+
+  <!-- Feature Grid -->
+  <div class="feature-grid">
+    <!-- Note Taking Card -->
+    <div class="card">
+      <h3><i class="fas fa-pen-fancy"></i> Note Taking</h3>
+      <input type="text" id="noteTitle" placeholder="Note title" />
+      <textarea id="noteContent" rows="2" placeholder="Write your note content..."></textarea>
+      <div style="display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap;">
+        <button id="cancelNoteBtn" class="custom-btn custom-btn-outline" style="display: none;">Cancel</button>
+        <button id="saveNoteBtn" class="custom-btn"><i class="fas fa-save"></i> Add Note</button>
+      </div>
+      <hr />
+      <div id="notesList" style="max-height: 240px; overflow-y: auto; flex:1;"></div>
+    </div>
+
+    <!-- To-Do List Card -->
+    <div class="card">
+      <h3><i class="fas fa-check-circle"></i> To-Do List</h3>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+        <input type="text" id="todoInput" placeholder="Write a new task..." style="flex:2;" />
+        <button id="addTodoBtn" class="custom-btn"><i class="fas fa-plus"></i> Add</button>
+      </div>
+      <div id="todoList" style="margin-top: 1rem; max-height: 240px; overflow-y: auto;"></div>
+    </div>
+
+    <!-- Minutes Generator Card -->
+    <div class="card">
+      <h3><i class="fas fa-file-alt"></i> Generate Minutes</h3>
+      <label style="font-weight:500; font-size:0.8rem;">Meeting Topic</label>
+      <input type="text" id="minutesTopic" value="Weekly Sync" />
+      <label style="font-weight:500; font-size:0.8rem;">Key Discussion</label>
+      <textarea id="minutesDiscussion" rows="2">Discussed Q2 roadmap, design system updates.</textarea>
+      <label style="font-weight:500; font-size:0.8rem;">Decisions</label>
+      <textarea id="minutesDecisions" rows="2">Adopt new component library; next milestone June 10.</textarea>
+      <button id="generateMinutesBtn" class="custom-btn" style="align-self: flex-start;"><i class="fas fa-magic"></i> Generate Write-up</button>
+      <div id="minutesOutput" style="margin-top: 1rem;"></div>
+    </div>
+
+    <!-- Calendar Scheduler -->
+    <div class="card">
+      <h3><i class="fas fa-calendar-alt"></i> Activity Calendar</h3>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end;">
+        <div style="flex: 1 1 120px;">
+          <label style="font-size:0.7rem;">Date</label>
+          <input type="date" id="eventDate" style="padding: 0.5rem;" />
+        </div>
+        <div style="flex: 2 1 150px;">
+          <label style="font-size:0.7rem;">Activity</label>
+          <input type="text" id="eventTitle" placeholder="Task / meeting" />
+        </div>
+        <div style="flex: 1 1 100px;">
+          <label style="font-size:0.7rem;">Time</label>
+          <input type="text" id="eventTime" placeholder="e.g., 2:30 PM" />
+        </div>
+        <button id="addEventBtn" class="custom-btn" style="margin-bottom: 0.2rem;"><i class="fas fa-plus-circle"></i> Add</button>
+      </div>
+      <div id="calendarGrid" class="calendar-grid"></div>
+      <div id="eventList" class="event-list"></div>
+    </div>
+  </div>
+  <footer>
+    <i class="fas fa-heart" style="color: #ef4444;"></i> Fully responsive · Tap any element · Smart workflow
+  </footer>
+</div>
+
+<script>
+  // ---------- GLOBAL STATE ----------
+  let notes = [
+    { id: 1, title: "Welcome", content: "Start taking notes! Edit or delete anytime." },
+    { id: 2, title: "Design ideas", content: "Use gradient cards, responsive layout." }
+  ];
+  let todos = [
+    { id: 1, text: "Review project roadmap", completed: false },
+    { id: 2, text: "Prepare UI mockups", completed: true },
+    { id: 3, text: "Team sync at 3 PM", completed: false }
+  ];
+  let calendarEvents = [
+    { id: 1, date: getToday(), title: "Design review", time: "10:00 AM" },
+    { id: 2, date: getFutureDate(3), title: "Sprint demo", time: "2:00 PM" }
+  ];
+  let editingNoteId = null;
+
+  // Helper dates
+  function getToday() {
+    const d = new Date();
+    return d.toISOString().slice(0,10);
+  }
+  function getFutureDate(days) {
+    const d = new Date();
+    d.setDate(d.getDate() + days);
+    return d.toISOString().slice(0,10);
+  }
+
+  // escapeHtml
+  function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/[&<>]/g, function(m) {
+      if (m === '&') return '&amp;';
+      if (m === '<') return '&lt;';
+      if (m === '>') return '&gt;';
+      return m;
+    });
+  }
+
+  // ---------- SLIDES (Interactive Carousel) ----------
+  const slidesData = [
+    { icon: "fa-rocket", title: "🚀 Smart Workspace", desc: "All-in-one dashboard: notes, tasks, meeting minutes & calendar. Fully responsive." },
+    { icon: "fa-list-check", title: "📝 Notes & To-Dos", desc: "Capture ideas instantly, organize tasks, sync across devices with adaptive UI." },
+    { icon: "fa-calendar-week", title: "📅 Seamless Calendar", desc: "Schedule activities, see month view, manage events on the go." },
+    { icon: "fa-brain", title: "✨ AI-Powered Minutes", desc: "Generate meeting write-ups with one click. Copy & share professional minutes." }
+  ];
+  let currentSlide = 0;
+
+  function renderSlides() {
+    const container = document.getElementById('slidesRoot');
+    if (!container) return;
+    const slide = slidesData[currentSlide];
+    container.innerHTML = `
+      <div class="slides-section">
+        <div class="slide-header">
+          <div class="slide-title"><i class="fas fa-layer-group"></i> Feature Highlights</div>
+          <div class="slide-buttons">
+            <button class="btn-slide" id="prevSlideBtn"><i class="fas fa-chevron-left"></i><span> Prev</span></button>
+            ${slidesData.map((s, idx) => `<button class="btn-slide ${idx === currentSlide ? 'active' : ''}" data-slide-index="${idx}"><i class="fas ${s.icon}"></i><span> ${s.title.substring(0,2)}</span></button>`).join('')}
+            <button class="btn-slide" id="nextSlideBtn"><span>Next </span><i class="fas fa-chevron-right"></i></button>
+          </div>
+        </div>
+        <div class="slide-content">
+          <i class="fas ${slide.icon}" style="font-size: clamp(2rem, 8vw, 3.2rem); color: #3b82f6; margin-bottom: 0.8rem;"></i>
+          <h2 style="margin-bottom: 0.5rem; font-size: clamp(1.2rem, 4vw, 1.8rem);">${slide.title}</h2>
+          <p style="max-width: 550px; color: #2d3a5e; font-size: clamp(0.8rem, 3vw, 0.95rem);">${slide.desc}</p>
+          <div style="margin-top: 1rem;"><span style="background:#eef2ff; padding:0.2rem 1rem; border-radius:2rem; font-size:0.75rem;"><i class="fas fa-hand-peace"></i> Interactive tools below</span></div>
+        </div>
+      </div>
+    `;
+    // attach events
+    document.getElementById('prevSlideBtn')?.addEventListener('click', () => {
+      currentSlide = (currentSlide - 1 + slidesData.length) % slidesData.length;
+      renderSlides();
+    });
+    document.getElementById('nextSlideBtn')?.addEventListener('click', () => {
+      currentSlide = (currentSlide + 1) % slidesData.length;
+      renderSlides();
+    });
+    document.querySelectorAll('[data-slide-index]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        currentSlide = parseInt(btn.dataset.slideIndex);
+        renderSlides();
+      });
+    });
+  }
+
+  // ---------- NOTES RENDER ----------
+  function renderNotes() {
+    const container = document.getElementById('notesList');
+    if (!container) return;
+    if (notes.length === 0) {
+      container.innerHTML = '<div style="text-align:center; color:#94a3b8;">📭 No notes yet. Add one!</div>';
+      return;
+    }
+    container.innerHTML = notes.map(note => `
+      <div style="background:#ffffff; border-radius:1rem; padding:0.7rem; margin-bottom:0.6rem; border:1px solid #e2e8f0;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px; flex-wrap:wrap;">
+          <strong style="font-size:0.9rem; word-break:break-word;">${escapeHtml(note.title)}</strong>
+          <div style="display: flex; gap: 6px;">
+            <button class="edit-note-btn" data-id="${note.id}" style="background:none; border:none; cursor:pointer; color:#3b82f6; font-size:0.9rem;"><i class="fas fa-edit"></i></button>
+            <button class="delete-note-btn" data-id="${note.id}" style="background:none; border:none; cursor:pointer; color:#ef4444;"><i class="fas fa-trash"></i></button>
+          </div>
+        </div>
+        <div style="font-size:0.8rem; color:#334155; margin-top:6px;">${escapeHtml(note.content.substring(0, 70))}${note.content.length > 70 ? '...' : ''}</div>
+      </div>
+    `).join('');
+    document.querySelectorAll('.edit-note-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const id = parseInt(btn.dataset.id);
+        const note = notes.find(n => n.id === id);
+        if (note) {
+          document.getElementById('noteTitle').value = note.title;
+          document.getElementById('noteContent').value = note.content;
+          editingNoteId = id;
+          const saveBtn = document.getElementById('saveNoteBtn');
+          saveBtn.innerHTML = '<i class="fas fa-save"></i> Update Note';
+          document.getElementById('cancelNoteBtn').style.display = 'inline-flex';
+        }
+      });
+    });
+    document.querySelectorAll('.delete-note-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const id = parseInt(btn.dataset.id);
+        notes = notes.filter(n => n.id !== id);
+        if (editingNoteId === id) {
+          editingNoteId = null;
+          document.getElementById('noteTitle').value = '';
+          document.getElementById('noteContent').value = '';
+          document.getElementById('saveNoteBtn').innerHTML = '<i class="fas fa-save"></i> Add Note';
+          document.getElementById('cancelNoteBtn').style.display = 'none';
+        }
+        renderNotes();
+      });
+    });
+  }
+
+  function saveNoteHandler() {
+    const title = document.getElementById('noteTitle').value.trim();
+    const content = document.getElementById('noteContent').value;
+    if (!title) return;
+    if (editingNoteId) {
+      const idx = notes.findIndex(n => n.id === editingNoteId);
+      if (idx !== -1) notes[idx] = { ...notes[idx], title, content };
+      editingNoteId = null;
+      document.getElementById('saveNoteBtn').innerHTML = '<i class="fas fa-save"></i> Add Note';
+      document.getElementById('cancelNoteBtn').style.display = 'none';
+    } else {
+      notes.push({ id: Date.now(), title, content });
+    }
+    document.getElementById('noteTitle').value = '';
+    document.getElementById('noteContent').value = '';
+    renderNotes();
+  }
+  function cancelEdit() {
+    editingNoteId = null;
+    document.getElementById('noteTitle').value = '';
+    document.getElementById('noteContent').value = '';
+    document.getElementById('saveNoteBtn').innerHTML = '<i class="fas fa-save"></i> Add Note';
+    document.getElementById('cancelNoteBtn').style.display = 'none';
+  }
+
+  // ---------- TODOS ----------
+  function renderTodos() {
+    const container = document.getElementById('todoList');
+    if (!container) return;
+    if (todos.length === 0) {
+      container.innerHTML = '<div style="color:#94a3b8; text-align:center;">✨ No tasks, take a break!</div>';
+      return;
+    }
+    container.innerHTML = todos.map(todo => `
+      <div class="todo-item">
+        <span class="todo-text ${todo.completed ? 'completed' : ''}" data-id="${todo.id}">
+          ${todo.completed ? '<i class="fas fa-check-circle" style="color:#22c55e; margin-right:8px;"></i>' : '<i class="far fa-circle" style="margin-right:8px;"></i>'}
+          ${escapeHtml(todo.text)}
+        </span>
+        <button class="delete-todo-btn" data-id="${todo.id}" class="delete-icon"><i class="fas fa-trash-alt"></i></button>
+      </div>
+    `).join('');
+    document.querySelectorAll('.todo-text').forEach(span => {
+      span.addEventListener('click', (e) => {
+        const id = parseInt(span.dataset.id);
+        todos = todos.map(t => t.id === id ? { ...t, completed: !t.completed } : t);
+        renderTodos();
+      });
+    });
+    document.querySelectorAll('.delete-todo-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const id = parseInt(btn.dataset.id);
+        todos = todos.filter(t => t.id !== id);
+        renderTodos();
+      });
+    });
+  }
+  function addTodo() {
+    const input = document.getElementById('todoInput');
+    const text = input.value.trim();
+    if (!text) return;
+    todos.push({ id: Date.now(), text, completed: false });
+    input.value = '';
+    renderTodos();
+  }
+
+  // ---------- MINUTES ----------
+  function generateMinutes() {
+    const topic = document.getElementById('minutesTopic').value;
+    const discussion = document.getElementById('minutesDiscussion').value;
+    const decisions = document.getElementById('minutesDecisions').value;
+    const date = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    const minutesText = `📋 MEETING MINUTES\nDate: ${date}\nTopic: ${topic}\n\n🔹 Discussion Points:\n${discussion}\n\n🔸 Decisions Made:\n${decisions}\n\n✅ Action Items: Follow up on deliverables, schedule next sync.\n--- Generated by FlowCore`;
+    const outputDiv = document.getElementById('minutesOutput');
+    outputDiv.innerHTML = `
+      <div class="minutes-preview">${escapeHtml(minutesText)}</div>
+      <button id="copyMinutesBtn" class="custom-btn custom-btn-outline" style="margin-top: 0.7rem;"><i class="fas fa-copy"></i> Copy Minutes</button>
+    `;
+    document.getElementById('copyMinutesBtn')?.addEventListener('click', () => {
+      navigator.clipboard.writeText(minutesText);
+      alert('✅ Minutes copied to clipboard!');
+    });
+  }
+
+  // ---------- CALENDAR (responsive month view) ----------
+  function getCalendarDays() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth();
+    const firstDay = new Date(year, month, 1);
+    const startWeekday = firstDay.getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const days = [];
+    for (let i = 0; i < startWeekday; i++) days.push(null);
+    for (let i = 1; i <= daysInMonth; i++) days.push(i);
+    return { days, year, month };
+  }
+  function getEventsForDay(dayNum, year, month) {
+    if (!dayNum) return [];
+    const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(dayNum).padStart(2,'0')}`;
+    return calendarEvents.filter(ev => ev.date === dateStr);
+  }
+  function renderCalendar() {
+    const container = document.getElementById('calendarGrid');
+    const eventListEl = document.getElementById('eventList');
+    if (!container) return;
+    const { days, year, month } = getCalendarDays();
+    const weekdays = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+    let html = weekdays.map(day => `<div style="font-weight:600; font-size:0.7rem; text-align:center;">${day}</div>`).join('');
+    days.forEach(day => {
+      if (day === null) {
+        html += `<div class="cal-day"></div>`;
+      } else {
+        const evs = getEventsForDay(day, year, month);
+        html += `<div class="cal-day"><strong>${day}</strong>${evs.map(ev => `<div class="cal-event" title="${ev.title} ${ev.time}">${ev.title.length>7?ev.title.slice(0,6)+'..':ev.title}</div>`).join('')}</div>`;
+      }
+    });
+    container.innerHTML = html;
+    // event list
+    if (calendarEvents.length === 0) {
+      eventListEl.innerHTML = '<strong>📌 Upcoming Activities</strong><div style="font-size:0.75rem;">No scheduled events</div>';
+    } else {
+      eventListEl.innerHTML = `<strong>📌 Upcoming Activities</strong>` + calendarEvents.map(ev => `
+        <div style="display:flex; justify-content:space-between; align-items:center; background:#f1f5f9; margin:6px 0; padding:6px 10px; border-radius:12px; gap:6px; flex-wrap:wrap;">
+          <span style="font-size:0.8rem;"><i class="far fa-calendar-check"></i> ${ev.date} – ${escapeHtml(ev.title)} (${ev.time})</span>
+          <button class="delete-event-btn" data-id="${ev.id}" style="background:none; border:none; color:#ef4444; cursor:pointer;"><i class="fas fa-times-circle"></i></button>
+        </div>
+      `).join('');
+      document.querySelectorAll('.delete-event-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const id = parseInt(btn.dataset.id);
+          calendarEvents = calendarEvents.filter(ev => ev.id !== id);
+          renderCalendar();
+        });
+      });
+    }
+  }
+  function addCalendarEvent() {
+    const date = document.getElementById('eventDate').value;
+    const title = document.getElementById('eventTitle').value.trim();
+    const time = document.getElementById('eventTime').value.trim() || "All day";
+    if (!date || !title) return;
+    calendarEvents.push({ id: Date.now(), date, title, time });
+    document.getElementById('eventTitle').value = '';
+    document.getElementById('eventTime').value = '';
+    document.getElementById('eventDate').value = getToday();
+    renderCalendar();
+  }
+
+  // ---------- INIT & EVENT LISTENERS (mobile friendly) ----------
+  document.addEventListener('DOMContentLoaded', () => {
+    renderSlides();
+    renderNotes();
+    renderTodos();
+    renderCalendar();
+    document.getElementById('eventDate').value = getToday();
+
+    document.getElementById('saveNoteBtn').addEventListener('click', saveNoteHandler);
+    document.getElementById('cancelNoteBtn').addEventListener('click', cancelEdit);
+    document.getElementById('addTodoBtn').addEventListener('click', addTodo);
+    document.getElementById('todoInput').addEventListener('keypress', (e) => { if(e.key === 'Enter') addTodo(); });
+    document.getElementById('generateMinutesBtn').addEventListener('click', generateMinutes);
+    document.getElementById('addEventBtn').addEventListener('click', addCalendarEvent);
+  });
+</script>
+</body>
+</html>
